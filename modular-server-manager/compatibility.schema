@@ -34,8 +34,6 @@
             "additionalItems": false
         }
     },
-    "additionalProperties": false,
-    "additionalItems": false,
     "required": [
         "compatibility"
     ]

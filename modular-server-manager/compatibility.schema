@@ -19,8 +19,7 @@
                     },
                     "required": [
                         "min_module_version",
-                        "max_module_version",
-                        "recommended_module_version"
+                        "max_module_version"
                     ],
                     "additionalProperties": false,
                     "additionalItems": false

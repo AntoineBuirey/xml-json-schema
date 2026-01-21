@@ -74,13 +74,13 @@
       <xs:enumeration value="bool"/>
       <xs:enumeration value="int"/>
       <xs:enumeration value="float"/>
-      <xs:enumeration value="Version"/>
+      <xs:enumeration value="version"/>
       <xs:enumeration value="list[str]"/>
-      <xs:enumeration value="list[Version]"/>
-      <xs:enumeration value="List[Dict[str, Any]]"/>
-      <xs:enumeration value="Dict[str, Any]"/>
-      <xs:enumeration value="Dict[Version, Dict[str, Any]]"/>
-      <xs:enumeration value="Any"/>
+      <xs:enumeration value="list[version]"/>
+      <xs:enumeration value="list[dict[str, any]]"/>
+      <xs:enumeration value="dict[str, any]"/>
+      <xs:enumeration value="dict[version, dict[str, any]]"/>
+      <xs:enumeration value="any"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -89,7 +89,7 @@
     <xs:union memberTypes="tns:dataType">
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="None"/>
+          <xs:enumeration value="none"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:union>

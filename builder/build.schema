@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/build-schema.json",
+  "title": "Build Configuration Schema",
+  "description": "Schema for build.yml files",
+  "type": "object",
+  "properties": {
+    "imports": {
+      "description": "Import other build files or configuration files",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "Path to the file to import (relative or absolute)",
+            "type": "string"
+          },
+          "as": {
+            "description": "Alias name to reference the imported file",
+            "type": "string"
+          }
+        },
+        "required": ["path", "as"],
+        "additionalProperties": false
+      }
+    },
+    "vars": {
+      "description": "Variable definitions that can be used throughout the build file",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "files-groups": {
+      "description": "Named groups of file patterns",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "File pattern (glob pattern)"
+        }
+      }
+    },
+    "rules": {
+      "description": "Build rules defining tasks and their dependencies",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "tags": {
+            "description": "Tags to categorize this rule",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required-files": {
+            "description": "Files or file groups required before running this rule",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "File pattern or file group name"
+                }
+              },
+              {
+                "type": "string",
+                "description": "Reference to a files-group"
+              }
+            ]
+          },
+          "expected-files": {
+            "description": "Files that should exist after running this rule",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "File pattern"
+            }
+          },
+          "commands": {
+            "description": "Shell commands to execute for this rule",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Shell command"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
